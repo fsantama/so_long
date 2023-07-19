@@ -6,7 +6,7 @@
 #    By: fsantama <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/19 11:02:42 by fsantama          #+#    #+#              #
-#    Updated: 2023/07/19 17:19:03 by fsantama         ###   ########.fr        #
+#    Updated: 2023/07/19 18:50:05 by fsantama         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,16 +47,16 @@ $(PRINTF) :
 	@make  -C inc/ft_printf > /dev/null
 
 $(MLX42) :
-	@MAKE -C inc/MLX42/include/MLX42 > /dev/null
+	@make -C inc/MLX42> /dev/null
 
-$(NAME) : $(LIBFT) $(OBJS) | $(PRINTF) $(OBJS) | $(MLX42) $(OBJS)
+$(NAME) : $(LIBFT) $(PRINTF) $(MLX42) $(OBJS)
 	@echo "$(CYAN) ======================================================="
-	@echo "|			               _                   				|
-	@echo "|			  ___  ___    | | ___  _ __   __ _ 				|
-	@echo "|			 / __|/ _ \   | |/ _ \| '_ \ / _` | 			|
-	@echo "|			 \__ \ (_) |  | | (_) | | | | (_| | 			|
-	@echo "|			 |___/\___/___|_|\___/|_| |_|\__, |				|
-	@echo "|					 |_____|             |___/				|
+	@echo "|	               _                   		|"
+	@echo "|	  ___  ___    | | ___  _ __   __ _ 		|"
+	@echo "|	 / __|/ _ \   | |/ _ \|  _ \ / _  | 		|"
+	@echo "|	 \__ \ (_) |  | | (_) | | | | (_| | 		|"
+	@echo "|	 |___/\___/___|_|\___/|_| |_|\__, |		|"
+	@echo "|			 |_____|     |___/		|"
 	@echo " ======================================================="
 	@echo " ================ Develop by fsantama =================="
 	@echo " ======================================================="
@@ -88,30 +88,31 @@ $(NAME) : $(LIBFT) $(OBJS) | $(PRINTF) $(OBJS) | $(MLX42) $(OBJS)
 	@echo "$(GREEN) $(NAME) make done ✅ $(DEFAULT)"
 	@echo "$(GREEN) $(LIBFT) make done ✅ $(DEFAULT)"
 	@echo "$(GREEN) $(PRINTF) make done ✅ $(DEFAULT)"
-	@echo " "
+	@echo "$(GREEN) $(MLX42) make done ✅ $(DEFAULT)"
 	@$(CC) $(CFLAGS) $(MLX42FLAGS) $(LIBFT) $(PRINTF) $(MLX42) $(OBJS) -o $(NAME)
 
 %.o : %.c
-	@$(CC) $(CFLAGS) $< -c
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean :
 	@rm -f $(OBJS)
 	@make -C inc/Libft clean > /dev/null
 	@make -C inc/ft_printf clean > /dev/null
-	@make -C inc/MLX42/include/MLX42 clean > /dev/null
+	@make -C inc/MLX42/ clean > /dev/null
 	@echo "$(RED) $(NAME) objects clean done 🧹 $(DEFAULT)"
 	@echo "$(RED) $(LIBFT) objects clean done 🧹 $(DEFAULT)"
 	@echo "$(RED) $(PRINTF) objects clean done 🧹 $(DEFAULT)"
+	@echo "$(RED) $(MLX42) objects clean done 🧹 $(DEFAULT)"
 
 fclean : clean
 	@rm -f $(NAME)
 	@make -C inc/Libft fclean > /dev/null
 	@make -C inc/ft_printf fclean > /dev/null
-	@make -C inc/MLX42/include/MLX42 fclean > /dev/null
+	@make -C inc/MLX42/ fclean > /dev/null
 	@echo "$(RED) $(NAME) clean done 🧹 $(DEFAULT)"
 	@echo "$(RED) $(LIBFT) clean done 🧹 $(DEFAULT)"
 	@echo "$(RED) $(PRINTF) clean done 🧹 $(DEFAULT)"
-
+	@echo "$(RED) $(MLX42) fclean > /dev/null 🧹 $(DEFAULT)"
 re: fclean all
 
 #bonus : $(NAME_BONUS)
