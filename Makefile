@@ -6,7 +6,7 @@
 #    By: fsantama <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/19 11:02:42 by fsantama          #+#    #+#              #
-#    Updated: 2023/07/19 18:50:05 by fsantama         ###   ########.fr        #
+#    Updated: 2023/07/31 18:27:09 by fsantama         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@
 # PROGRAM FOR COMPILING C PROGRAMS
 CC 		=	gcc
 # C COMPILER FLAGS
-CFLAGS =	-Werror -Wall -Wextra
+CFLAGS =	-Werror -Wall -Wextra -g
 MLX42FLAGS = -framework Cocoa -framework OpenGL -framework IOKit
 
 NAME 	=	so_long
@@ -29,7 +29,13 @@ MLX42	=	./inc/MLX42/libmlx42.a
 #                              MANDATORY PART                                  #
 # =============================================================================#
 
-SRCS	=	src/so_long.c \
+SRCS	=	inc/get_next_line/get_next_line.c \
+			inc/get_next_line/get_next_line_utils.c \
+			src/so_long.c \
+			src/ft_check_map.c \
+			src/ft_error.c \
+			src/ft_read_map.c \
+			src/ft_check_solution.c \
 
 OBJS	=	$(SRCS:.c=.o)
 
