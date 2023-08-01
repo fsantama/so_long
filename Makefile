@@ -6,7 +6,7 @@
 #    By: fsantama <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/19 11:02:42 by fsantama          #+#    #+#              #
-#    Updated: 2023/07/31 18:27:09 by fsantama         ###   ########.fr        #
+#    Updated: 2023/08/01 18:21:59 by fsantama         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ $(PRINTF) :
 	@make  -C inc/ft_printf > /dev/null
 
 $(MLX42) :
-	@make -C inc/MLX42> /dev/null
+	cmake --build build -j4 inc/MLX42> /dev/null
 
 $(NAME) : $(LIBFT) $(PRINTF) $(MLX42) $(OBJS)
 	@echo "$(CYAN) ======================================================="
