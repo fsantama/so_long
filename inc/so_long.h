@@ -6,7 +6,7 @@
 /*   By: fsantama <fsantama@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:25:09 by fsantama          #+#    #+#             */
-/*   Updated: 2023/07/31 18:44:12 by fsantama         ###   ########.fr       */
+/*   Updated: 2023/08/01 17:46:09 by fsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,30 @@
 # define INVALID_CHAR "Map contains invalid characteres\n"
 # define INVALID_OBJECTS "Invalid numbers of player, collect or exit.\n"
 # define INVALID_SOLUTION "Map has no solution\n"
+# define SPR 32
 
 typedef struct s_solong
 {
-	char	*map;
-	int		fd_map;
-	char	**read_map;
-	char	**copy_map;
-	int		col;
-	int		row;
-	int		n_player;
-	int		n_collect;
-	int		n_exit;
-	int		x_pos;
-	int		y_pos;
+	char			*map;
+	int				fd_map;
+	char			**read_map;
+	char			**copy_map;
+	int				col;
+	int				row;
+	int				n_player;
+	int				n_collect;
+	int				n_exit;
+	int				x_pos;
+	int				y_pos;
+	int				moves;
+	int				dir;
+	mlx_t			*mlx;
+	mlx_image_t		*img;
+	mlx_texture_t	*t_wall;
+	mlx_texture_t	*t_floor;
+	mlx_texture_t	*t_player;
+	mlx_texture_t	*t_collect;
+	mlx_texture_t	*t_exit;
 }	t_solong;
 
 char	*get_next_line(int fd);

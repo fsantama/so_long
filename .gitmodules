@@ -4,9 +4,6 @@
 [submodule "inc/ft_printf"]
 	path = inc/ft_printf
 	url = git@github.com:fsantama/ft_printf.git
-[submodule "inc/MLX42"]
-	path = inc/MLX42
-	url = git@github.com:codam-coding-college/MLX42.git
 [submodule "inc/get_next_line"]
 	path = inc/get_next_line
 	url = git@github.com:fsantama/get_next_line.git

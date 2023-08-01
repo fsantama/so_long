@@ -6,7 +6,7 @@
 /*   By: fsantama <fsantama@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:53:28 by fsantama          #+#    #+#             */
-/*   Updated: 2023/07/31 19:11:00 by fsantama         ###   ########.fr       */
+/*   Updated: 2023/08/01 18:03:18 by fsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	init_game(t_solong *g)
 {
-
+	g->mlx = mlx_init(g->col * SPR, g->row * SPR, "so_long", false);
+	mlx_loop(g->mlx);
 }
 
 void	leaks(void)
