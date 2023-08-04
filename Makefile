@@ -6,7 +6,7 @@
 #    By: fsantama <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/19 11:02:42 by fsantama          #+#    #+#              #
-#    Updated: 2023/08/01 18:21:59 by fsantama         ###   ########.fr        #
+#    Updated: 2023/08/04 16:50:50 by fsantama         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,12 +18,14 @@
 CC 		=	gcc
 # C COMPILER FLAGS
 CFLAGS =	-Werror -Wall -Wextra -g
-MLX42FLAGS = -framework Cocoa -framework OpenGL -framework IOKit
+# MLX42FLAGS = -framework Cocoa -framework OpenGL -framework IOKit
 
 NAME 	=	so_long
 LIBFT 	=	./inc/Libft/libft.a
 PRINTF 	=	./inc/ft_printf/libftprintf.a
-MLX42	=	./inc/MLX42/libmlx42.a
+MLX42	=	./inc/MLX42/libmlx42.a -ldl -pthread -lm -Iinclude -lglfw \
+			-L "/Users/$$USER/.brew/opt/glfw/lib/"
+# GLFW	=	-lglfw -L "/Users/$$USER/.brew/opt/glfw/lib/"
 
 # =============================================================================#
 #                              MANDATORY PART                                  #
@@ -36,6 +38,12 @@ SRCS	=	inc/get_next_line/get_next_line.c \
 			src/ft_error.c \
 			src/ft_read_map.c \
 			src/ft_check_solution.c \
+			src/ft_load_player_textures.c \
+			src/ft_load_walls_textures.c \
+			src/ft_draw_player.c \
+			src/ft_draw_walls.c \
+			src/ft_end_game.c \
+			src/ft_play.c \
 
 OBJS	=	$(SRCS:.c=.o)
 
@@ -53,9 +61,9 @@ $(PRINTF) :
 	@make  -C inc/ft_printf > /dev/null
 
 $(MLX42) :
-	cmake --build build -j4 inc/MLX42> /dev/null
+	@make  -C  inc/MLX42> /dev/null
 
-$(NAME) : $(LIBFT) $(PRINTF) $(MLX42) $(OBJS)
+$(NAME) : $(LIBFT) $(PRINTF) $(MLX42) $(GLFW) $(OBJS)
 	@echo "$(CYAN) ======================================================="
 	@echo "|	               _                   		|"
 	@echo "|	  ___  ___    | | ___  _ __   __ _ 		|"
@@ -95,7 +103,7 @@ $(NAME) : $(LIBFT) $(PRINTF) $(MLX42) $(OBJS)
 	@echo "$(GREEN) $(LIBFT) make done ✅ $(DEFAULT)"
 	@echo "$(GREEN) $(PRINTF) make done ✅ $(DEFAULT)"
 	@echo "$(GREEN) $(MLX42) make done ✅ $(DEFAULT)"
-	@$(CC) $(CFLAGS) $(MLX42FLAGS) $(LIBFT) $(PRINTF) $(MLX42) $(OBJS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(LIBFT) $(PRINTF) $(MLX42) $(OBJS) -o $(NAME)
 
 %.o : %.c
 	@$(CC) $(CFLAGS) -c $< -o $@

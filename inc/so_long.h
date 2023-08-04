@@ -6,7 +6,7 @@
 /*   By: fsantama <fsantama@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:25:09 by fsantama          #+#    #+#             */
-/*   Updated: 2023/08/01 17:46:09 by fsantama         ###   ########.fr       */
+/*   Updated: 2023/08/04 18:12:58 by fsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@
 # define INVALID_CHAR "Map contains invalid characteres\n"
 # define INVALID_OBJECTS "Invalid numbers of player, collect or exit.\n"
 # define INVALID_SOLUTION "Map has no solution\n"
-# define SPR 32
+# define INVALID_TEXTURES "Textures can't be loaded\n"
+# define SPRITE_WIDTH 32
+# define SPRITE_HEIGHT 32
+# define SPR 64
 
 typedef struct s_solong
 {
@@ -47,13 +50,39 @@ typedef struct s_solong
 	int				n_exit;
 	int				x_pos;
 	int				y_pos;
+	int				x_mov;
+	int				y_mov;
 	int				moves;
 	int				dir;
 	mlx_t			*mlx;
 	mlx_image_t		*img;
 	mlx_texture_t	*t_wall;
+	mlx_texture_t	*t_wall_ul;
+	mlx_texture_t	*t_wall_up;
+	mlx_texture_t	*t_wall_ur;
+	mlx_texture_t	*t_wall_l;
+	mlx_texture_t	*t_wall_r;
+	mlx_texture_t	*t_wall_bl;
+	mlx_texture_t	*t_wall_b;
+	mlx_texture_t	*t_wall_br;
+	mlx_texture_t	*t_wall_bbl;
+	mlx_texture_t	*t_wall_bb;
+	mlx_texture_t	*t_wall_bbr;
 	mlx_texture_t	*t_floor;
 	mlx_texture_t	*t_player;
+	mlx_texture_t	*t_player_1;
+	mlx_texture_t	*t_player_2;
+	mlx_texture_t	*t_player_3;
+	mlx_texture_t	*t_player_4;
+	mlx_texture_t	*t_player_5;
+	mlx_texture_t	*t_player_6;
+	mlx_texture_t	*t_player_7;
+	mlx_texture_t	*t_player_8;
+	mlx_texture_t	*t_player_9;
+	mlx_texture_t	*t_player_10;
+	mlx_texture_t	*t_player_11;
+	mlx_texture_t	*t_player_12;
+	mlx_texture_t	*t_player_13;
 	mlx_texture_t	*t_collect;
 	mlx_texture_t	*t_exit;
 }	t_solong;
@@ -72,5 +101,12 @@ void	ft_error(t_solong *g, char *error);
 void	ft_read_map(t_solong *g);
 void	ft_free(t_solong *g);
 void	ft_check_solution(t_solong *g);
+void	ft_end_game(t_solong *g);
+void	ft_load_player_textures(t_solong *g);
+void	ft_load_walls_textures(t_solong *g);
+void	ft_draw_player(t_solong *g, int x, int y);
+void	ft_draw_walls(t_solong *g, int x, int y);
+void	ft_play(mlx_key_data_t keydata, void *param);
+void	draw_map(t_solong *g);
 
 #endif
