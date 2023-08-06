@@ -6,7 +6,7 @@
 /*   By: fsantama <fsantama@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:25:09 by fsantama          #+#    #+#             */
-/*   Updated: 2023/08/04 18:12:58 by fsantama         ###   ########.fr       */
+/*   Updated: 2023/08/06 17:50:05 by fsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,6 @@ void	ft_draw_player(t_solong *g, int x, int y);
 void	ft_draw_walls(t_solong *g, int x, int y);
 void	ft_play(mlx_key_data_t keydata, void *param);
 void	draw_map(t_solong *g);
+void	ft_maharta(t_solong *g);
 
 #endif

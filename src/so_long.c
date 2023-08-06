@@ -6,7 +6,7 @@
 /*   By: fsantama <fsantama@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:53:28 by fsantama          #+#    #+#             */
-/*   Updated: 2023/08/04 18:58:22 by fsantama         ###   ########.fr       */
+/*   Updated: 2023/08/06 18:18:41 by fsantama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,22 @@ void	load_textures(t_solong *g)
 	ft_load_walls_textures(g);
 	g->t_floor = mlx_load_png("img/floor.png");
 	if (!g->t_floor)
+	{
+		ft_maharta(g);
 		ft_error(g, INVALID_TEXTURES);
+	}
 	g->t_collect = mlx_load_png("img/collect.png");
 	if (!g->t_collect)
+	{
+		ft_maharta(g);
 		ft_error(g, INVALID_TEXTURES);
+	}
 	g->t_exit = mlx_load_png("img/exit.png");
 	if (!g->t_exit)
+	{
+		ft_maharta(g);
 		ft_error(g, INVALID_TEXTURES);
+	}
 }
 
 void	init_game(t_solong *g)

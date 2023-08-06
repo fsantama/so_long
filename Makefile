@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fsantama <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: fsantama <fsantama@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/19 11:02:42 by fsantama          #+#    #+#              #
-#    Updated: 2023/08/04 16:50:50 by fsantama         ###   ########.fr        #
+#    Updated: 2023/08/06 17:50:25 by fsantama         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,9 +23,7 @@ CFLAGS =	-Werror -Wall -Wextra -g
 NAME 	=	so_long
 LIBFT 	=	./inc/Libft/libft.a
 PRINTF 	=	./inc/ft_printf/libftprintf.a
-MLX42	=	./inc/MLX42/libmlx42.a -ldl -pthread -lm -Iinclude -lglfw \
-			-L "/Users/$$USER/.brew/opt/glfw/lib/"
-# GLFW	=	-lglfw -L "/Users/$$USER/.brew/opt/glfw/lib/"
+MLX42	=	./inc/MLX42/libmlx42.a
 
 # =============================================================================#
 #                              MANDATORY PART                                  #
@@ -44,6 +42,7 @@ SRCS	=	inc/get_next_line/get_next_line.c \
 			src/ft_draw_walls.c \
 			src/ft_end_game.c \
 			src/ft_play.c \
+			src/ft_maharta.c \
 
 OBJS	=	$(SRCS:.c=.o)
 
@@ -63,7 +62,7 @@ $(PRINTF) :
 $(MLX42) :
 	@make  -C  inc/MLX42> /dev/null
 
-$(NAME) : $(LIBFT) $(PRINTF) $(MLX42) $(GLFW) $(OBJS)
+$(NAME) : $(LIBFT) $(PRINTF) $(MLX42) $(OBJS)
 	@echo "$(CYAN) ======================================================="
 	@echo "|	               _                   		|"
 	@echo "|	  ___  ___    | | ___  _ __   __ _ 		|"
@@ -103,7 +102,7 @@ $(NAME) : $(LIBFT) $(PRINTF) $(MLX42) $(GLFW) $(OBJS)
 	@echo "$(GREEN) $(LIBFT) make done ✅ $(DEFAULT)"
 	@echo "$(GREEN) $(PRINTF) make done ✅ $(DEFAULT)"
 	@echo "$(GREEN) $(MLX42) make done ✅ $(DEFAULT)"
-	@$(CC) $(CFLAGS) $(LIBFT) $(PRINTF) $(MLX42) $(OBJS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(LIBFT) $(PRINTF) $(MLX42) -ldl -pthread -lm -Iinclude -lglfw -L "/Users/$$USER/.brew/opt/glfw/lib/" $(OBJS) -o $(NAME)
 
 %.o : %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
